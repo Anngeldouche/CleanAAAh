@@ -1,36 +1,18 @@
-let currentPage = 1;
-const totalPages = 4;
+function updateWeekHeader() {
+    const now = new Date();
+    const day = now.getDay(); // 0 = dimanche, 1 = lundi ...
+    const diffToMonday = day === 0 ? -6 : 1 - day;
+    const monday = new Date(now);
+    monday.setDate(now.getDate() + diffToMonday);
+    const sunday = new Date(monday);
+    sunday.setDate(monday.getDate() + 6);
 
-function showPage(pageNumber) {
-    for (let i = 1; i <= totalPages; i++) {
-        document.getElementById(`page${i}`).classList.remove('active');
-    }
-    document.getElementById(`page${pageNumber}`).classList.add('active');
+    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    const mondayStr = monday.toLocaleDateString('fr-FR', options);
+    const sundayStr = sunday.toLocaleDateString('fr-FR', options);
+
+    document.getElementById('week-range').innerText = `${mondayStr} to ${sundayStr}`;
 }
 
-function nextPage() {
-    if (currentPage < totalPages) {
-        currentPage++;
-        showPage(currentPage);
-    }
-}
-
-function prevPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        showPage(currentPage);
-    }
-}
-
-// Afficher la première page au chargement
-showPage(currentPage);
-
-function updatePoints() {
-    let total = 0;
-    for (let i = 2; i <= totalPages; i++) {
-        document.querySelectorAll(`#page${i} input[type=checkbox]`).forEach(cb => {
-            if(cb.checked) total += parseInt(cb.dataset.points);
-        });
-    }
-    document.getElementById('resume').innerHTML = `Total : ${total} pts`;
-}
+// Appel au chargement
+updateWeekHeader();

@@ -8,37 +8,46 @@
 </head>
 <body>
 <div id="carnet">
-    <!-- Page 1: résumé -->
+    <!-- Page 1 : Résumé -->
     <div class="page" id="page1">
         <h2>Résumé des points</h2>
         <div id="resume">
-            SDB: 0 pts<br>
-            Cuisine: 0 pts
+            Total : 0 pts
         </div>
-        <button onclick="nextPage()">Tourner la page</button>
+        <div class="navigation">
+            <button onclick="prevPage()">&#8592;</button>
+            <button onclick="nextPage()">&#8594;</button>
+        </div>
     </div>
 
-    <!-- Page 2: SDB test -->
+    <!-- Page 2 : Cuisine -->
     <div class="page" id="page2">
-        <h2>Salle de bain</h2>
-        <div class="page-content">
-            <label class="checkbox"><input type="checkbox" data-points="5" onchange="updatePoints()"> Nettoyer lavabo</label><br>
-            <label class="checkbox"><input type="checkbox" data-points="10" onchange="updatePoints()"> Nettoyer douche</label><br>
-            <label class="checkbox"><input type="checkbox" data-points="8" onchange="updatePoints()"> Laver sol</label><br>
+        <h2>Cuisine</h2>
+        <label><input type="checkbox" data-points="15" onchange="updatePoints()"> Laver la vaisselle (15 pts)</label>
+        <div class="navigation">
+            <button onclick="prevPage()">&#8592;</button>
+            <button onclick="nextPage()">&#8594;</button>
         </div>
-        <button onclick="prevPage()">Revenir</button>
-        <button onclick="nextPage()">Tourner la page</button>
     </div>
 
-    <!-- Page 3: Cuisine test -->
+    <!-- Page 3 : Chambre -->
     <div class="page" id="page3">
-        <h2>Cuisine</h2>
-        <div class="page-content">
-            <label class="checkbox"><input type="checkbox" data-points="5" onchange="updatePoints()"> Laver vaisselle</label><br>
-            <label class="checkbox"><input type="checkbox" data-points="4" onchange="updatePoints()"> Essuyer plans</label><br>
-            <label class="checkbox"><input type="checkbox" data-points="8" onchange="updatePoints()"> Balayer sol</label><br>
+        <h2>Chambre</h2>
+        <label><input type="checkbox" data-points="5" onchange="updatePoints()"> Faire le lit (5 pts)</label>
+        <div class="navigation">
+            <button onclick="prevPage()">&#8592;</button>
+            <button onclick="nextPage()">&#8594;</button>
         </div>
-        <button onclick="prevPage()">Revenir</button>
+    </div>
+
+    <!-- Page 4 : Salle de bain -->
+    <div class="page" id="page4">
+        <h2>Salle de bain</h2>
+        <label><input type="checkbox" data-points="15" onchange="updatePoints()"> Vider la poubelle (15 pts)</label>
+        <div class="navigation">
+            <button onclick="prevPage()">&#8592;</button>
+            <button onclick="nextPage()">&#8594;</button>
+        </div>
     </div>
 </div>
 

@@ -1,8 +1,29 @@
 let currentPage = 1;
 const totalPages = 4;
 
+function showPage(pageNumber) {
+    for (let i = 1; i <= totalPages; i++) {
+        document.getElementById(`page${i}`).classList.remove('active');
+    }
+    document.getElementById(`page${pageNumber}`).classList.add('active');
+}
+
+function nextPage() {
+    if (currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage);
+    }
+}
+
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+    }
+}
+
 // Afficher la première page au chargement
-document.getElementById(`page${currentPage}`).classList.add('active');
+showPage(currentPage);
 
 function updatePoints() {
     let total = 0;
@@ -12,16 +33,4 @@ function updatePoints() {
         });
     }
     document.getElementById('resume').innerHTML = `Total : ${total} pts`;
-}
-
-function nextPage() {
-    document.getElementById(`page${currentPage}`).classList.remove('active');
-    currentPage = currentPage % totalPages + 1; // boucle infinie
-    document.getElementById(`page${currentPage}`).classList.add('active');
-}
-
-function prevPage() {
-    document.getElementById(`page${currentPage}`).classList.remove('active');
-    currentPage = (currentPage - 2 + totalPages) % totalPages + 1; // boucle infinie
-    document.getElementById(`page${currentPage}`).classList.add('active');
 }

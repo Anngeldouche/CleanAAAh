@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carnet de tâches</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="carnet">
+    <!-- Page 1: résumé -->
+    <div class="page" id="page1">
+        <h2>Résumé des points</h2>
+        <div id="resume">
+            SDB: 0 pts<br>
+            Cuisine: 0 pts
+        </div>
+        <button onclick="nextPage()">Tourner la page</button>
+    </div>
+
+    <!-- Page 2: SDB test -->
+    <div class="page" id="page2">
+        <h2>Salle de bain</h2>
+        <div class="page-content">
+            <label class="checkbox"><input type="checkbox" data-points="5" onchange="updatePoints()"> Nettoyer lavabo</label><br>
+            <label class="checkbox"><input type="checkbox" data-points="10" onchange="updatePoints()"> Nettoyer douche</label><br>
+            <label class="checkbox"><input type="checkbox" data-points="8" onchange="updatePoints()"> Laver sol</label><br>
+        </div>
+        <button onclick="prevPage()">Revenir</button>
+        <button onclick="nextPage()">Tourner la page</button>
+    </div>
+
+    <!-- Page 3: Cuisine test -->
+    <div class="page" id="page3">
+        <h2>Cuisine</h2>
+        <div class="page-content">
+            <label class="checkbox"><input type="checkbox" data-points="5" onchange="updatePoints()"> Laver vaisselle</label><br>
+            <label class="checkbox"><input type="checkbox" data-points="4" onchange="updatePoints()"> Essuyer plans</label><br>
+            <label class="checkbox"><input type="checkbox" data-points="8" onchange="updatePoints()"> Balayer sol</label><br>
+        </div>
+        <button onclick="prevPage()">Revenir</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

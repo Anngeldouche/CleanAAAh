@@ -1,38 +1,27 @@
 let currentPage = 1;
-const totalPages = 3;
-const points = {
-    "SDB": 0,
-    "Cuisine": 0
-};
+const totalPages = 4;
+
+// Afficher la première page au chargement
+document.getElementById(`page${currentPage}`).classList.add('active');
 
 function updatePoints() {
-    // Reset points
-    points["SDB"] = 0;
-    points["Cuisine"] = 0;
-
-    // SDB
-    document.querySelectorAll('#page2 input[type=checkbox]').forEach(cb => {
-        if(cb.checked) points["SDB"] += parseInt(cb.dataset.points);
-    });
-    // Cuisine
-    document.querySelectorAll('#page3 input[type=checkbox]').forEach(cb => {
-        if(cb.checked) points["Cuisine"] += parseInt(cb.dataset.points);
-    });
-
-    // Mettre à jour résumé
-    document.getElementById('resume').innerHTML = `SDB: ${points["SDB"]} pts<br>Cuisine: ${points["Cuisine"]} pts`;
+    let total = 0;
+    for (let i = 2; i <= totalPages; i++) {
+        document.querySelectorAll(`#page${i} input[type=checkbox]`).forEach(cb => {
+            if(cb.checked) total += parseInt(cb.dataset.points);
+        });
+    }
+    document.getElementById('resume').innerHTML = `Total : ${total} pts`;
 }
 
 function nextPage() {
-    if(currentPage < totalPages) {
-        document.getElementById(`page${currentPage}`).style.transform = 'rotateY(-180deg)';
-        currentPage++;
-    }
+    document.getElementById(`page${currentPage}`).classList.remove('active');
+    currentPage = currentPage % totalPages + 1; // boucle infinie
+    document.getElementById(`page${currentPage}`).classList.add('active');
 }
 
 function prevPage() {
-    if(currentPage > 1) {
-        currentPage--;
-        document.getElementById(`page${currentPage}`).style.transform = 'rotateY(0deg)';
-    }
+    document.getElementById(`page${currentPage}`).classList.remove('active');
+    currentPage = (currentPage - 2 + totalPages) % totalPages + 1; // boucle infinie
+    document.getElementById(`page${currentPage}`).classList.add('active');
 }
